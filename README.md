@@ -15,6 +15,11 @@ you must have in your local machine
 
 ---
 
+- local
+- cloud
+
+## **Local**
+
 Up the grafana and influxdb containers with
 
 ``` sh
@@ -27,13 +32,19 @@ After that, the containers will be setted up, and we need to run our k6 containe
   docker-compose run k6 run /script/script.js
 ```
 
-if you want to run in cloud, you have to do two things. First,  you need to update the docker-file and add the enviroment variable
+## **Cloud**
+
+Dependencies:
+
+- You must create your account in k6 cloud (you have 50 load tests in the free subscription. Use this with wise)
+
+To run in cloud, you have to do three things. First,  you need to update the docker-file and add the enviroment variable
 
 ```sh
   K6_CLOUD_TOKEN={YOUR_TOKEN}
 ```
 
-then, add in options, the code with your own project id, and it's done !
+then, add in options, the code with your own project id
 
 ```sh
   ext: {
@@ -41,7 +52,13 @@ then, add in options, the code with your own project id, and it's done !
       projectID: {YOUR_PROJECT_ID},
       name: "A name for your test"
     }
-  }
+}
+```
+
+And finally, run the the command in the terminal
+
+```sh
+  docker-compose run k6 run -o cloud /scripts/scriptTest.js
 ```
 
 NOTE: the url inside this tests are pointing to k6 website, you must not run huge load tests for this url.
