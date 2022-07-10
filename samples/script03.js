@@ -1,6 +1,22 @@
+//Load TEST
+/*
+You should run a Load Test to:
+
+-Assess the current performance of your system under typical and peak load.
+-Make sure you continue to meet the performance standards as you make changes to your system (code and infrastructure).
+-You probably have some understanding about the amount of traffic your system is seeing 
+  on average and during peak hours. This information will be useful when deciding what your performance goals should be, in other words, how to configure the performance thresholds.
+*/
+//Make sure you don't go over your normal number of VUs - that's not load testing, but stress testing.
+/*
+Things u should have in mind
+  99% of requests should finish within 5 seconds.
+  95% of requests should finish within 1 second.
+  99% users should be able to login successfully on the first try.
+*/
 import http from 'k6/http';
 import { sleep } from 'k6';
-//TESTE DE CARGA
+
 export const options = {
   stages: [
     { duration: '5m', target: 60 }, // simulate ramp-up of traffic from 1 to 60 users over 5 minutes.
@@ -21,22 +37,3 @@ export default function () {
   http.get('http://test.k6.io');
   sleep(1);
 }
-
-/*
-You should run a Load Test to:
-
--Assess the current performance of your system under typical and peak load.
--Make sure you continue to meet the performance standards as you make changes to your system (code and infrastructure).
--You probably have some understanding about the amount of traffic your system is seeing 
-  on average and during peak hours. This information will be useful when deciding what your performance goals should be, in other words, how to configure the performance thresholds.
-*/
-
-/*
-Things u should have in mind
-  99% of requests should finish within 5 seconds.
-  95% of requests should finish within 1 second.
-  99% users should be able to login successfully on the first try.
-*/
-//no teste de carga devemos ir somente até as nossas condicoes normais e especiais de trabalho
-//se quebrarmos nossa aplicacao ja estaremos indo para o cenario de teste de stress
-//Make sure you don't go over your normal number of VUs - that's not load testing, but stress testing.
