@@ -4,7 +4,6 @@ Repository to practice and test different types of load tests. All of this examp
 
 ## Dependencies
 
----
 
 you must have in your local machine
 
@@ -13,7 +12,6 @@ you must have in your local machine
 
 ## How to run
 
----
 
 - local
 - cloud
